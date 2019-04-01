@@ -12,6 +12,10 @@
     "all-the-package-names": "^1.3689.0",
     "npm": "^6.9.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/byi8220/literally-everything-on-npm.git"
+  },
   "bin": {
     "literally-everything": "src/cli.js"
   }

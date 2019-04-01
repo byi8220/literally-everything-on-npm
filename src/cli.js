@@ -1,18 +1,45 @@
 #!/usr/bin/env node
-const ind = require("./index.js");
-var stdin = process.stdin;
-stdin.setEncoding('utf-8');
+const names = require("all-the-package-names");
+const spawn = require("child_process");
+let npm = require("npm");
+let cwd = process.cwd();
+let batchNo = process.argv[2];
+let max = names.length;
+let batchsize = 50;
 
-console.log("Do you really want to do this (Y/N)?");
+let batches = []
 
-stdin.on('data', function(data){
-    if(data.toUpperCase().trim() === 'Y'){
-        console.log("Welp");
-        ind.install_it_all();
-        process.exit();
-    }else{
-        console.log("Exiting");
-        process.exit();
+let curr = [];
+for(let i = 0; i < max; i++){
+    curr.push(names[i]);
+    if(curr.length > batchsize){
+        batches.push(curr);
+        curr = [];
     }
+}
 
-});
+// The most bootleg fork ever
+if (batchNo){
+    installBatch(batchNo);
+}else{
+    let i = 0;
+    let pool = 0;
+    console.log(i);
+    while(i < batches.length){
+        if (pool < 10){
+            let child = spawn.fork(__filename, [i]);
+            i++;
+            pool++;
+            child.on("exit", function(code, signal){
+                pool--;
+            });
+        }
+    }
+}
+
+function installBatch(ind){
+        npm.load({}, function(err) {
+            npm.commands.install(batches[ind], function(err){
+            });
+        });
+}
