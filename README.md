@@ -6,12 +6,10 @@ Did you ever want to contribute meaningfully to the npm ecosystem with the added
 
 Google already beat me to building a minimum spanning tree of the internet so I guess I'll settle for node.js
 
-## Usage
+## Known Issues
 
-1. Install this
+- Your computer will probably run out of memory less than 1% into the install
 
-`npm install literally-everything`
+- Something about call stack size exceeded errors happen
 
-2. Install everything else
-
-`node_modules/.bin/literally-everything`
+- It completely ruins your dependencies and probably will break something
