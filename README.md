@@ -14,4 +14,4 @@ Google already beat me to building a minimum spanning tree of the internet so I 
 
 2. Install everything else
 
-`literally-everything`
+`.node_modules/bin/literally-everything`
