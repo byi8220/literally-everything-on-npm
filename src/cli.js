@@ -17,23 +17,21 @@ for(let i = 0; i < max; i++){
         curr = [];
     }
 }
-
+console.log(__filename);
 // The most bootleg fork ever
 if (batchNo){
+    console.log(batchNo);
     installBatch(batchNo);
 }else{
     let i = 0;
     let pool = 0;
-    console.log(i);
+
     while(i < batches.length){
-        if (pool < 10){
-            let child = spawn.fork(__filename, [i]);
-            i++;
-            pool++;
-            child.on("exit", function(code, signal){
-                pool--;
-            });
-        }
+        // Dirty hack with easy injection potential
+        console.log(i);
+        let batchProc = spawn.execFileSync("node", [__filename, i]);
+        console.log(batchProc.stdout);
+        i++;
     }
 }
 
