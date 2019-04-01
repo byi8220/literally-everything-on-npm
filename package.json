@@ -1,0 +1,18 @@
+{
+  "name": "literally-everything",
+  "version": "1.0.0",
+  "description": "npm install *",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "all-the-package-names": "^1.3689.0",
+    "npm": "^6.9.0"
+  },
+  "bin": {
+    "literally-everything": "src/cli.js"
+  }
+}
